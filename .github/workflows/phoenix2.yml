@@ -18,4 +18,10 @@ jobs:
     steps:
       - name: deploy
         # ...deployment-specific steps
-        run: echo "just a test ${{ github.event.inputs.test_password }}"
+      - if: ${{ github.event.inputs.test_password == 'qa' }}
+        run: echo "just a test from qa"
+        
+      - if: ${{ github.event.inputs.test_password == 'prd' }}
+        run: echo "just a test from prd"
+        
+        
