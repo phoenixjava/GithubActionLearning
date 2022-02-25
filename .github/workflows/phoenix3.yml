@@ -5,6 +5,7 @@ on:
     workflows: ["Deployment"]
     types:
       - completed
+      - success
 jobs:
   print-username:
     runs-on: ubuntu-latest
