@@ -1,9 +1,11 @@
 name: Deployment
 
-
 on:
-  workflow_dispatch
-
+  workflow_dispatch:
+    inputs:
+      test_password:
+        description: 'test_password'
+        required: true
 #on:
 #  push:
 #    branches:
@@ -16,4 +18,4 @@ jobs:
     steps:
       - name: deploy
         # ...deployment-specific steps
-        run: echo "just a test"
+        run: echo "just a test ${{ github.event.inputs.test_password }}"
