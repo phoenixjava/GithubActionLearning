@@ -15,8 +15,12 @@ jobs:
   deployment:
     runs-on: ubuntu-latest
     environment: phoenix_prd
-    if: ${{ github.event.inputs.test_password == 'qa' }}
+    
     steps:
       - name: deploy_qa
-          # ...deployment-specific steps     
+        if: ${{ github.event.inputs.test_password == 'qa' }} 
         run: echo "just a test from qa"
+
+      - name: deploy_prd
+        if: ${{ github.event.inputs.test_password == 'prd' }} 
+        run: echo "just a test from prd"
