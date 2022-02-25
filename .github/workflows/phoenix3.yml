@@ -1,17 +1,14 @@
-name: workflow_call_test
-on:
-  workflow_call:
-    inputs:
-      username:
-        description: 'A username passed from the caller workflow'
-        default: 'john-doe'
-        required: false
-        type: string
+name: Do anything after the release of the first workflow
 
+on:
+  workflow_run:
+    workflows: ["phoenix2"]
+    types:
+      - completed
 jobs:
   print-username:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print the input name to STDOUT
-        run: echo The username is ${{ inputs.username }}
+      - name: test
+        run: echo The username is phoenix3
