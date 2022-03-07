@@ -12,13 +12,13 @@ jobs:
       JOB_VARIABLE: JOB
     steps:
       - name: Run Commands with various variables
-        if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW' }}
+        if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW_PHOENIX' }}
         env:
           STEP_VARIABLE: STEP
-          STEP_WORKFLOW_VARIABLE: ${{env.WORKFLOW_VARIABLE}}_PHOENIX
+          WORKFLOW_VARIABLE: ${{env.WORKFLOW_VARIABLE}}_PHOENIX
         run: |
           echo "Hello World"
           echo "This is the $WORKFLOW_VARIABLE environment variable"
           echo "This is the $JOB_VARIABLE environment variable"
           echo "This is the $STEP_VARIABLE environment variable"
-          echo "This is the $STEP_WORKFLOW_VARIABLE environment variable"
+          #echo "This is the $STEP_WORKFLOW_VARIABLE environment variable"
