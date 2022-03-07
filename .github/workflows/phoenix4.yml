@@ -15,7 +15,7 @@ jobs:
         if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW' }}
         env:
           STEP_VARIABLE: STEP
-          STEP_WORKFLOW_VARIABLE: ${WORKFLOW_VARIABLE}_PHOENIX
+          STEP_WORKFLOW_VARIABLE: ${{env.WORKFLOW_VARIABLE}}_PHOENIX
         run: |
           echo "Hello World"
           echo "This is the $WORKFLOW_VARIABLE environment variable"
