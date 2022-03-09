@@ -11,6 +11,14 @@ jobs:
     env:
       JOB_VARIABLE: JOB
     steps:
+      - name: phoenix_test
+        run: |
+            set -e
+            if [[ "qa1" = "qa" ]]; then
+              echo "test"
+            else
+              echo "not same."  
+            fi
       - name: Run Commands with various variables
         if: ${{ env.WORKFLOW_VARIABLE == 'WORKFLOW_PHOENIX' }}
         env:
