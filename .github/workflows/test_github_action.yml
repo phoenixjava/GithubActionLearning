@@ -1,0 +1,53 @@
+name: test github action
+on:
+#   workflow_run:
+#     workflows: [GitHub Actions Demo]
+#     types:
+#       - completed
+#   workflow_dispatch:
+#     inputs:
+#       name:
+#         description: 'CI Number'
+#         required: true
+  push:
+    branches:
+     - master
+jobs:
+  job1:
+    uses: ./.github/workflows/my_first_github_action.yml
+  train:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+    
+      - name: Runing Success
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        run: echo 'The workflow passed'
+        
+      - name: Run Failure
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: echo 'The workflow failed'
+        
+      - name: Check Out Repository
+        uses: actions/checkout@v2
+
+      - name: Enable Python ${{ env.python-version }}
+        uses: actions/setup-python@v2
+        env:
+          python-version: 3.7
+        with:
+          python-version: ${{ env.python-version }}
+
+      - name: run python code with output
+        id: run-py
+        run: |
+          py=`python test.py ${{ github.event.inputs.name }}`
+          echo "::set-output name=success::$(echo $py)"
+          
+
+      - name: print python output
+
+        if: steps.run-py.outputs.success == 'Hello World'
+        run: |
+          echo "success true"
+
