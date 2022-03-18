@@ -12,6 +12,12 @@ jobs:
       - name: environment test
         env:
           PRD_AKS: ${{ secrets.PRD_AKS }}
-        #if: ${{ github.event.inputs.test_password == 'qa' }} 
+        #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
         run: |
-         echo "phoenix test " $PRD_AKS
+            if [[ "${PRD_AKS}" = "akstest0" ]]; then
+              echo "The aks cluster is "$PRD_AKS
+            else
+              echo "Please check aks cluster." 
+              exit 1
+            fi
+    
