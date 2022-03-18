@@ -6,7 +6,7 @@ on:
 jobs:
   environment_test:
     runs-on: ubuntu-latest
-    environment: phoenix_qa
+    environment: phoenix_prd
     
     steps:       
       - name: environment test
