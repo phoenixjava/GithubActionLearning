@@ -1,0 +1,17 @@
+name: Environment Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  environment test:
+    runs-on: ubuntu-latest
+    environment: phoenix_prd
+    
+    steps:       
+      - name: environment test
+        env:
+          PRD_AKS: ${{ secrets.PRD_AKS }}
+        #if: ${{ github.event.inputs.test_password == 'qa' }} 
+        run: |
+         echo "phoenix test " $PRD_AKS
