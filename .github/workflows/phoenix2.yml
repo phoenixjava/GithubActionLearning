@@ -17,10 +17,13 @@ jobs:
     environment: phoenix_prd
     
     steps:
-      - name: deploy_qa
-        if: ${{ github.event.inputs.test_password == 'qa' }} 
-        run: echo "just a test from qa"
+      - name: environment test
+        #if: ${{ github.event.inputs.test_password == 'qa' }} 
+        run: echo ${secrets.phoenix_prd.prd_aks}
+      #- name: deploy_qa
+      #  if: ${{ github.event.inputs.test_password == 'qa' }} 
+      #  run: echo "just a test from qa"
 
-      - name: deploy_prd
-        if: ${{ github.event.inputs.test_password == 'prd' }} 
-        run: echo "just a test from prd"
+      #- name: deploy_prd
+      #  if: ${{ github.event.inputs.test_password == 'prd' }} 
+      #  run: echo "just a test from prd"
