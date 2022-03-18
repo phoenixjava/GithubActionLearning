@@ -11,7 +11,7 @@ jobs:
     steps:       
       - name: environment test
         env:
-          PRD_AKS: ${{ secrets.PRD_AKS }}
+          PRD_AKS: ${{ secrets.AKS_CLUSTER }}
         #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
         run: |
             if [[ "${PRD_AKS}" = "aksprd0" ]]; then
@@ -21,7 +21,7 @@ jobs:
             fi
       - name: environment test2
         env:
-          QA_AKS: ${{ secrets.QA_AKS }}
+          QA_AKS: ${{ secrets.AKS_CLUSTER }}
         #if: ${{ secrets.QA_AKS == 'akstest0' }} 
         run: |
             if [[ "${QA_AKS}" = "akstest0" ]]; then
