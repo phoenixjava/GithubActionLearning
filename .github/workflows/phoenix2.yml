@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: environment test
         #if: ${{ github.event.inputs.test_password == 'qa' }} 
-        run: echo ${secrets.phoenix_prd.prd_aks}
+        run: echo ${secrets.prd_aks}
       #- name: deploy_qa
       #  if: ${{ github.event.inputs.test_password == 'qa' }} 
       #  run: echo "just a test from qa"
