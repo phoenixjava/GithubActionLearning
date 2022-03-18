@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  environment test:
+  environment_test:
     runs-on: ubuntu-latest
     environment: phoenix_prd
     
