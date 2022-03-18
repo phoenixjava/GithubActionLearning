@@ -19,4 +19,13 @@ jobs:
             else
               echo "Please check aks cluster." 
             fi
-    
+      - name: environment test2
+        env:
+          QA_AKS: ${{ secrets.QA_AKS }}
+        #if: ${{ secrets.QA_AKS == 'akstest0' }} 
+        run: |
+            if [[ "${QA_AKS}" = "akstest0" ]]; then
+              echo "The aks cluster is "$QA_AKS
+            else
+              echo "Please check aks cluster." 
+            fi
