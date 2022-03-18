@@ -2,7 +2,7 @@ name: Do anything after the release of the first workflow
 
 on:
   workflow_run:
-    workflows: ["Deployment"]
+    workflows: ["Deployment_temp"]
     types:
       - completed
       - success
