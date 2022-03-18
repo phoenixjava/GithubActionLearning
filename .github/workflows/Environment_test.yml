@@ -14,10 +14,9 @@ jobs:
           PRD_AKS: ${{ secrets.PRD_AKS }}
         #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
         run: |
-            if [[ "${PRD_AKS}" = "akstest0" ]]; then
+            if [[ "${PRD_AKS}" = "aksprd0" ]]; then
               echo "The aks cluster is "$PRD_AKS
             else
               echo "Please check aks cluster." 
-              exit 1
             fi
     
