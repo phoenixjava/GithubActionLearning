@@ -1,0 +1,39 @@
+name: Environment Test2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  get_env:
+    runs-on: ubuntu-latest
+    steps:       
+      - name: environment test
+      run: |
+         par_env='qa'
+         echo "::set-output name=envname::${par_env}"
+         
+  environment_test:
+    runs-on: ubuntu-latest
+    environment: phoenix_prd
+    
+    steps:       
+      - name: environment test
+        env:
+          PRD_AKS: ${{ secrets.AKS_CLUSTER }}
+        #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
+        run: |
+            if [[ "${PRD_AKS}" = "aksprd0" ]]; then
+              echo "The aks cluster is "$PRD_AKS
+            else
+              echo "Please check aks cluster." 
+            fi
+      - name: environment test2
+        env:
+          QA_AKS: ${{ secrets.AKS_CLUSTER }}
+        #if: ${{ secrets.QA_AKS == 'akstest0' }} 
+        run: |
+            if [[ "${QA_AKS}" = "akstest0" ]]; then
+              echo "The aks cluster is "$QA_AKS
+            else
+              echo "Please check aks cluster." 
+            fi
