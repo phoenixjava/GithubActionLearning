@@ -19,8 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: get_env
     if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
-    environment: phoenix_qa
-      
+    environment: phoenix_qa     
     steps:
       - name: environment test
         env:
@@ -42,3 +41,4 @@ jobs:
             else
               echo "Please check aks cluster." 
             fi
+            
