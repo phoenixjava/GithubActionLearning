@@ -15,13 +15,13 @@ jobs:
          par_env='prd'
          echo "::set-output name=envname::${par_env}"
          
-  environment_test:
+  environment_qa:
     runs-on: ubuntu-latest
     needs: get_env
     if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
     environment: phoenix_qa     
     steps:
-      - name: environment test
+      - name: print prd cluster
         env:
           PRD_AKS: ${{ secrets.AKS_CLUSTER }}
         #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
@@ -31,7 +31,7 @@ jobs:
             else
               echo "Please check aks cluster." 
             fi
-      - name: environment test2
+      - name: print qa cluster
         env:
           QA_AKS: ${{ secrets.AKS_CLUSTER }}
         #if: ${{ secrets.QA_AKS == 'akstest0' }} 
@@ -41,4 +41,30 @@ jobs:
             else
               echo "Please check aks cluster." 
             fi
-            
+  
+  environment_prd:
+    runs-on: ubuntu-latest
+    needs: get_env
+    if:  ${{ needs.get_env.outputs.output1 == 'prd'}}
+    environment: phoenix_prd     
+    steps:
+      - name: print prd cluster
+        env:
+          PRD_AKS: ${{ secrets.AKS_CLUSTER }}
+        #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
+        run: |
+            if [[ "${PRD_AKS}" = "aksprd0" ]]; then
+              echo "The aks cluster is "$PRD_AKS
+            else
+              echo "Please check aks cluster." 
+            fi
+      - name: print qa cluster
+        env:
+          QA_AKS: ${{ secrets.AKS_CLUSTER }}
+        #if: ${{ secrets.QA_AKS == 'akstest0' }} 
+        run: |
+            if [[ "${QA_AKS}" = "akstest0" ]]; then
+              echo "The aks cluster is "$QA_AKS
+            else
+              echo "Please check aks cluster." 
+            fi      
