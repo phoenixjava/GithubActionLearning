@@ -7,8 +7,8 @@ jobs:
   get_env:
     runs-on: ubuntu-latest
     steps:       
-      - name: environment test
-      run: |
+      - name: get the envname
+        run: |
          par_env='qa'
          echo "::set-output name=envname::${par_env}"
          
