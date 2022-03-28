@@ -13,14 +13,14 @@ jobs:
         id: getenv
         run: |
          par_env='qa'
-         echo "::set-output name=envname::${par_env}"
+         echo "::set-output name=envname::phoenix_${par_env}"
          
   environment_qa:
     runs-on: ubuntu-latest
     needs: get_env
     #if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
     #environment: phoenix_qa     
-    environment: phoenix_${needs.get_env.outputs.output}
+    environment: ${needs.get_env.outputs.output}
     steps:
       - name: print prd cluster
         env:
