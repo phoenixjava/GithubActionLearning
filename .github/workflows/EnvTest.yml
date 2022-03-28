@@ -18,8 +18,10 @@ jobs:
   environment_qa:
     runs-on: ubuntu-latest
     needs: get_env
-    if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
-    environment: phoenix_qa     
+    env: 
+      test: 'qa'
+    #if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
+    environment: phoenix_${test}     
     #environment: ${needs.get_env.outputs.output}
     steps:
       - name: print prd cluster
