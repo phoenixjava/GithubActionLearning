@@ -20,7 +20,7 @@ jobs:
     needs: get_env
     #if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
     #environment: phoenix_qa     
-    environment: phoenix_${{ needs.get_env.outputs.output}}
+    environment: phoenix_${needs.get_env.outputs.output}
     steps:
       - name: print prd cluster
         env:
