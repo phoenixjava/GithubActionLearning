@@ -33,6 +33,7 @@ jobs:
               echo "==========$test"
             else
               echo "Please check qa aks cluster." 
+              echo "==========$test"
             fi
   
   environment_prd:
