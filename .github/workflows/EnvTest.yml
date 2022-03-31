@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: get_env
     env: 
-      test: ${needs.get_env.outputs.output1}
+      test: 'qa'
     if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
     environment: phoenix_qa     
     #environment: ${needs.get_env.outputs.output1}
