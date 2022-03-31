@@ -19,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: get_env
     env: 
-      test: 'qa'
-    #if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
+      test: ${needs.get_env.outputs.output1}
+    if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
     environment: phoenix_$test     
-    #environment: ${needs.get_env.outputs.output}
+    #environment: ${needs.get_env.outputs.output1}
     steps:
       - name: print aks cluster
         env:
