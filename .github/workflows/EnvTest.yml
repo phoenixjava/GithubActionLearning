@@ -24,26 +24,14 @@ jobs:
     environment: phoenix_qa     
     #environment: ${needs.get_env.outputs.output}
     steps:
-      - name: print prd cluster
+      - name: print aks cluster
         env:
-          PRD_AKS: ${{ secrets.AKS_CLUSTER }}
-        #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
+          AKS_CLUSTER: ${{ secrets.AKS_CLUSTER }}
         run: |
-            if [[ "${PRD_AKS}" = "aksprd0" ]]; then
-              echo "The aks cluster is "$PRD_AKS
-              echo "==============$test"
+            if [[ "${AKS_CLUSTER}" = "akstest0" ]]; then
+              echo "The aks cluster is qa aks "$AKS_CLUSTER
             else
-              echo "Please check aks cluster." 
-            fi
-      - name: print qa cluster
-        env:
-          QA_AKS: ${{ secrets.AKS_CLUSTER }}
-        #if: ${{ secrets.QA_AKS == 'akstest0' }} 
-        run: |
-            if [[ "${QA_AKS}" = "akstest0" ]]; then
-              echo "The aks cluster is "$QA_AKS
-            else
-              echo "Please check aks cluster." 
+              echo "Please check qa aks cluster." 
             fi
   
   environment_prd:
@@ -52,23 +40,12 @@ jobs:
     if:  ${{ needs.get_env.outputs.output1 == 'prd'}}
     environment: phoenix_prd     
     steps:
-      - name: print prd cluster
+      - name: print aks cluster
         env:
-          PRD_AKS: ${{ secrets.AKS_CLUSTER }}
-        #if: ${{ secrets.PRD_AKS == 'akstest0' }} 
+          AKS_CLUSTER: ${{ secrets.AKS_CLUSTER }}
         run: |
-            if [[ "${PRD_AKS}" = "aksprd0" ]]; then
-              echo "The aks cluster is "$PRD_AKS
+            if [[ "${AKS_CLUSTER}" = "aksprd0" ]]; then
+              echo "The aks cluster is prd aks "$AKS_CLUSTER
             else
-              echo "Please check aks cluster." 
-            fi
-      - name: print qa cluster
-        env:
-          QA_AKS: ${{ secrets.AKS_CLUSTER }}
-        #if: ${{ secrets.QA_AKS == 'akstest0' }} 
-        run: |
-            if [[ "${QA_AKS}" = "akstest0" ]]; then
-              echo "The aks cluster is "$QA_AKS
-            else
-              echo "Please check aks cluster." 
-            fi      
+              echo "Please check prd aks cluster." 
+            fi    
