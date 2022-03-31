@@ -12,7 +12,7 @@ jobs:
       - name: get the envname
         id: getenv
         run: |
-         par_env='qa'
+         par_env='prd'
          echo "::set-output name=envname::${par_env}"
          
   environment_qa:
