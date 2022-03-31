@@ -31,6 +31,7 @@ jobs:
         run: |
             if [[ "${PRD_AKS}" = "aksprd0" ]]; then
               echo "The aks cluster is "$PRD_AKS
+              echo "==============$test"
             else
               echo "Please check aks cluster." 
             fi
