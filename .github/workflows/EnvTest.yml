@@ -21,7 +21,7 @@ jobs:
     env: 
       test: ${needs.get_env.outputs.output1}
     if:  ${{ needs.get_env.outputs.output1 == 'qa'}}
-    environment: phoenix_$test     
+    environment: phoenix_qa     
     #environment: ${needs.get_env.outputs.output1}
     steps:
       - name: print aks cluster
