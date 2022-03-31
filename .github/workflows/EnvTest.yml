@@ -30,6 +30,7 @@ jobs:
         run: |
             if [[ "${AKS_CLUSTER}" = "akstest0" ]]; then
               echo "The aks cluster is qa aks "$AKS_CLUSTER
+              echo "==========$test"
             else
               echo "Please check qa aks cluster." 
             fi
