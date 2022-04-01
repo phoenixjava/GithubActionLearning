@@ -39,7 +39,7 @@ jobs:
     if:  ${{ needs.get_env.outputs.output1 == 'prd'}}
     environment: phoenix_${{ needs.get_env.outputs.output1 }}     
     steps:
-      - name: print aks cluster
+      - name: print aks cluster ${{ needs.get_env.outputs.output1 }}
         env:
           AKS_CLUSTER: ${{ secrets.AKS_CLUSTER }}
         run: |
