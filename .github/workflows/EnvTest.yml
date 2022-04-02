@@ -47,7 +47,7 @@ jobs:
               echo "The aks cluster is prd aks "$AKS_CLUSTER
               test = 'QA'
               test = $(echo $test | tr '[a-z]' '[A-Z]')
-              print(test)
+              echo "$test"
             else
               echo "Please check prd aks cluster." 
             fi    
