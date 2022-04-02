@@ -46,7 +46,7 @@ jobs:
             if [[ "${AKS_CLUSTER}" = "aksprd0" ]]; then
               echo "The aks cluster is prd aks "$AKS_CLUSTER
               test='QA'
-              test=$(echo $test | tr '[a-z]' '[A-Z]')
+              test=$(echo $test | tr '[A-Z]' '[a-z]')
               echo "$test"
             else
               echo "Please check prd aks cluster." 
